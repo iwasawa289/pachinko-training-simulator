@@ -1,8 +1,8 @@
-const CACHE='pachinko-training-pc-v2';
+const CACHE='pachinko-training-pc-v4';
 const ASSETS=[
   './index.html',
   './manifest.webmanifest',
-  './icon.svg'
+  './icon-pachinko-v2.svg'
 ];
 
 self.addEventListener('install', event => {
