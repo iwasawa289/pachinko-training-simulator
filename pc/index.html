@@ -983,7 +983,7 @@ function finishNormal(toHeso){
       hold++;
       {const r=Math.random();holdColors.push(r<.08?"gold":r<.23?"red":r<.5?"green":"blue");updateHoldColors();tone(900,.08);}
       balls+=3;
-      setStep(2);
+      if(!spinning)setStep(2);
       showCallout('ヘソ入賞！ 保留 +1');
       els.message.textContent='ヘソ入賞';
       sync();
