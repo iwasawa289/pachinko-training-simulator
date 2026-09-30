@@ -1,9 +1,6 @@
-const CACHE='pachinko-training-pc-love-v1';
+const CACHE='pachinko-training-pc-v5';
 const ASSETS=[
   './index.html',
-  './love.css?v=1',
-  './assets/board.jpg',
-  './assets/love-lcd.jpg',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-pachinko-v2.svg'
@@ -17,7 +14,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k.startsWith('pachinko-training-pc-') && k !== CACHE).map(k => caches.delete(k)))
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
     )
   );
   self.clients.claim();
