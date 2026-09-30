@@ -559,6 +559,12 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
 }
 
 </style>
+
+<meta name="theme-color" content="#05070a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+
 </head>
 <body>
 <div class="wrap">
@@ -1501,5 +1507,14 @@ els.powerText.textContent='0%';
 setStep(1);sync();
 })();
 </script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+</script>
+
 </body>
 </html>
