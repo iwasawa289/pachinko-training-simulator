@@ -893,11 +893,15 @@ function point(path,t){
 
   return{x,y,seg};
 }
-function draw(){
+let lastDrawTime=null;
+function draw(frameTime){
+  const now=typeof frameTime==='number'?frameTime:0;
+  const elapsed=lastDrawTime===null?16.667:Math.max(0,Math.min(2000,now-lastDrawTime));
+  lastDrawTime=now;
   ctx.clearRect(0,0,canvas.width,canvas.height);
   for(let i=animBalls.length-1;i>=0;i--){
     const b=animBalls[i];
-    b.t+=b.speed;
+    b.t+=b.speed*(elapsed/16.667);
     const p=point(b.path,Math.min(1,b.t));
 
     if(p.seg!==b.lastSeg){
