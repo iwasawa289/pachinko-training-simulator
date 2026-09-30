@@ -1,6 +1,5 @@
-const CACHE='pachinko-training-pc-v1';
+const CACHE='pachinko-training-pc-v2';
 const ASSETS=[
-  './',
   './index.html',
   './manifest.webmanifest',
   './icon.svg'
@@ -21,6 +20,12 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
   event.respondWith(
     caches.match(event.request).then(cached => cached || fetch(event.request))
   );
