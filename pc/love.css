@@ -22,3 +22,6 @@ body.lesson-push #pushBtn{display:block;animation:none}
 
 #lessonScope{font-size:clamp(16px,1.2vw,19px);line-height:1.75;text-align:left;padding-top:14px;border-top:1px solid #985371;color:#ffe3ef}#lessonScope[hidden]{display:none!important}#lessonCard.choose{top:18%}
 .digit.suspense{animation:none;filter:none;transition:transform .5s ease-out,color .3s}.digit.near-stop{transform:translateY(-24%);color:#fff3a5;filter:drop-shadow(0 0 14px #ffbc75)}.digit.settling{animation:finalDigitStop .5s ease-out}@keyframes finalDigitStop{0%{transform:translateY(-24%)}65%{transform:translateY(8%)}100%{transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.digit.suspense{transition:none}.digit.settling{animation:none}}
+
+/* Supplied training title banner. */
+.love-header{padding:0;background:#080f1b;border-bottom:1px solid #716c94}.love-header .training-title{display:block;width:100%;height:100%;object-fit:contain}
