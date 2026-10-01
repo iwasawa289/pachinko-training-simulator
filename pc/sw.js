@@ -1,8 +1,8 @@
-const CACHE='pachinko-training-pc-love-v2';
+const CACHE='pachinko-training-pc-love-v3';
 const ASSETS=[
   './index.html',
-  './love.css?v=2',
-  './lesson.js?v=2',
+  './love.css?v=3',
+  './lesson.js?v=3',
   './assets/board-clean.jpg',
   './assets/love-lcd.jpg',
   './manifest.webmanifest',

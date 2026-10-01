@@ -565,7 +565,7 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 
-<link rel="stylesheet" href="love.css?v=2">
+<link rel="stylesheet" href="love.css?v=3">
 </head>
 <body>
 <div class="wrap"><nav class="love-nav"><strong>LOVE上等！ 体験機</strong><button id="lessonOpen" type="button">用語説明</button><button id="soundBtn" type="button" aria-pressed="false">音：OFF</button><button id="resetBtn" type="button">最初から</button><a href="original/">元の研修機</a></nav>
@@ -591,7 +591,7 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
 </div>
 
 <div id="gameDataPanel"><div class="game-data-title">LOVE CHANCE</div><div class="game-data-row"><span>大当り確率</span><b>1 / 30</b></div><div class="game-data-row"><span>総回転</span><b id="spinCountView">0</b></div><div class="game-data-row"><span>大当り回数</span><b id="hitCountView">0</b></div></div>
-<div id="lessonLayer" hidden><div id="lessonBlocker"></div><div id="lessonSpot" hidden aria-hidden="true"></div><section id="lessonCard" role="dialog" aria-modal="true" aria-labelledby="lessonTitle" aria-describedby="lessonText lessonHint"><div id="lessonProgress"></div><h1 id="lessonTitle"></h1><p id="lessonText"></p><p id="lessonHint"></p><div id="lessonChoices"><button id="lessonStart" class="lesson-primary" type="button">用語説明を受ける</button><button id="lessonSkip" type="button">受けずに遊技する</button></div><div id="lessonActions" hidden><button id="lessonBack" type="button">戻る</button><button id="lessonNext" class="lesson-primary" type="button">理解した・次へ</button><button id="lessonExit" type="button">説明を終了</button></div></section></div>
+<div id="lessonLayer" hidden><div id="lessonBlocker"></div><div id="lessonSpot" hidden aria-hidden="true"></div><section id="lessonCard" role="dialog" aria-modal="true" aria-labelledby="lessonTitle" aria-describedby="lessonText lessonHint"><div id="lessonProgress"></div><h1 id="lessonTitle"></h1><p id="lessonText"></p><p id="lessonHint"></p><p id="lessonScope" hidden></p><div id="lessonChoices"><button id="lessonStart" class="lesson-primary" type="button">用語説明を受ける</button><button id="lessonSkip" type="button">受けずに遊技する</button></div><div id="lessonActions" hidden><button id="lessonBack" type="button">戻る</button><button id="lessonNext" class="lesson-primary" type="button">理解した・次へ</button><button id="lessonExit" type="button">説明を終了</button></div></section></div>
 <div id="ballsOverlay" style="
   position:absolute;
   left:1.45%;
@@ -924,11 +924,18 @@ async function spin(){
   ds[0].textContent=n;ds[2].textContent=n;ds[0].classList.remove('spinning');ds[2].classList.remove('spinning');ds[0].classList.add('locked');ds[2].classList.add('locked');setStep(4);cue('REACH ♥ 恋の勝負！','red');tone(800,.3);
   for(let i=0;i<12;i++){ds[1].textContent=1+Math.floor(Math.random()*9);await wait(180);}
   if(superReach){cue('SUPER REACH ♥ 告白上等！','gold');for(let i=3;i>=1;i--){els.message.textContent='想いを届けろ！ '+i;ds[1].textContent=i;await wait(600);}cue('想いを込めて PUSH！','gold');pushBtn.classList.add('show');await new Promise(resolve=>{let done=false;const finish=()=>{if(done)return;done=true;clearTimeout(timer);pushResolve=null;resolve();};const timer=setTimeout(finish,3500);pushResolve=finish;});pushBtn.classList.remove('show');await wait(300);}
-  ds[1].classList.remove('spinning');ds[1].textContent=hit?n:n%9+1;
+  // Both hit and miss reaches use the same anticipation before the final stop.
+  cue('想いは届く…？',superReach?'gold':'red');
+  ds[1].classList.remove('spinning');ds[1].classList.add('suspense');
+  for(let i=0;i<7;i++){ds[1].textContent=(n+2+i)%9+1;tone(440+i*45,.06);await wait(140+i*65);}
+  ds[1].textContent=n===1?9:n-1;await wait(650);
+  ds[1].textContent=n;ds[1].classList.add('near-stop');cue('あと少し…',superReach?'gold':'red');await wait(1100);
+  ds[1].classList.remove('near-stop');ds[1].textContent=hit?n:n%9+1;ds[1].classList.add('settling');await wait(550);
+  ds[1].classList.remove('suspense','settling');
   if(hit){ds.forEach(d=>d.classList.add('locked'));hits++;setStep(5);cue('♥ 大当り！LOVE BONUS ♥','gold','hit');els.message.textContent='777 大当り！';showCallout('想いが届いた！ 大当り');[660,880,1100,1320].forEach((f,i)=>setTimeout(()=>{if(token===spinToken)tone(f,.2)},i*160));sync();await wait(2300);round=0;attacker=0;showTrainingPause();}
   else{cue('次の恋に、期待！','blue');els.message.textContent='リーチハズレ';await wait(1300);setStep(1);cue('恋の予感…');}
  }catch(e){if(e.message!=='cancelled')throw e;}
- finally{if(token===spinToken){ds.forEach(d=>d.classList.remove('spinning'));pushBtn.classList.remove('show');spinning=false;resumeDigital();}}
+ finally{if(token===spinToken){ds.forEach(d=>d.classList.remove('spinning','suspense','near-stop','settling'));pushBtn.classList.remove('show');spinning=false;resumeDigital();}}
 }
 
 function finishNormal(toHeso){
@@ -1237,7 +1244,7 @@ function stopPlay(){
   if(autoTimer){clearInterval(autoTimer);autoTimer=null}
 }
 function reset(){
-  totalSpins=0;++spinToken;holdColors=[];if(pushResolve)pushResolve();pushBtn.classList.remove("show");document.querySelectorAll(".digit").forEach(d=>d.classList.remove("locked","spinning"));cue("恋の予感…");
+  totalSpins=0;++spinToken;holdColors=[];if(pushResolve)pushResolve();pushBtn.classList.remove("show");document.querySelectorAll(".digit").forEach(d=>d.classList.remove("locked","spinning","suspense","near-stop","settling"));cue("恋の予感…");
   stopPlay();clearVTimer();clearRoundTimer();trainingPauseMode='';vToken++;setVUiActive(false);resetVGateForNextJackpot();hideVOverlay();if(els.trainingPauseOverlay)els.trainingPauseOverlay.classList.remove('show');balls=250;hold=0;hits=0;state='normal';round=0;attacker=0;spinning=false;animBalls=[];
   els.d1.textContent='7';els.d2.textContent='3';els.d3.textContent='5';
   els.message.textContent='遊技開始を押してください';
@@ -1304,7 +1311,7 @@ window.pachinkoGame={reset};
 })();
 </script>
 
-<script src="lesson.js?v=2"></script>
+<script src="lesson.js?v=3"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

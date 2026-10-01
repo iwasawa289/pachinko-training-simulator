@@ -8,9 +8,9 @@
  const terms=[
   ['ハンドル','玉を打つ強さを調整します。','この台：通常25～40％／右打ち50％以上。',[68,65,30,33]],
   ['釘（くぎ）','玉の向きや落ち方を変えます。','玉は釘に当たりながら下へ流れます。',[10,19,7,31]],
-  ['風車（かざぐるま）','玉が当たると回り、進む向きを変えます。','',[11,49,5.5,8]],
+  ['風車（ふうしゃ）','玉が当たると回り、進む向きを変えます。','',[11,49,5.5,8]],
   ['ヘソ（スタート入賞口）','玉が入ると大当りの抽選が進みます。','',[30.5,56.5,9,16]],
-  ['保留（ほりゅう）','順番待ちの抽選です。この台は最大4つ。','色が変わっても、当たり確定ではありません。',[20,46,28,6.5]],
+  ['保留（ほりゅう）','順番待ちの抽選です。この台は最大4つ。','',[20,46,28,6.5]],
   ['液晶・図柄・リーチ','左右がそろうとリーチ。3つそろうと大当り。','リーチだけでは、まだ当たりではありません。',[17.4,13.2,34.6,31.6]],
   ['PUSHボタン','指示が出たら押して、演出を楽しみます。','押し方や回数で当たりやすさは変わりません。',[27,33,16,7]],
   ['右打ち（みぎうち）','強く打ち、玉を盤面の右側へ流すことです。','この台：50％以上。終了後は25～40％へ。',[53,11,11,64]],
@@ -20,8 +20,8 @@
   ['玉掛かり（たまがかり）','盤面の釘などに玉が引っ掛かる状態です。','玉が流れず、入口をふさぐことがあります。',[11,30,6,14]],
   ['玉飛び不良','玉が飛ばない・弱い・飛び方が不安定な状態です。','発射レールの詰まりなどが原因になります。',[3.5,21,7.5,66]],
   ['玉詰まり','台の内部などで玉が詰まり、玉が出ない状態です。','見えている枠は持ち玉表示。内部の詰まりは見えません。',[1.4,78,15,10.5]],
-  ['パンク','時間内にV入賞できず、権利を失うことです。','V入賞の必要な台では、表示に合わせて右打ち。',[53.5,32.5,7.5,6.5]],
-  ['大当り確率 1/30','1回の抽選で当たる確率が1/30です。','30回で必ず当たる、という意味ではありません。',[71,12,25,13]]
+  ['パンク','時間内にV入賞できず、権利を失うことです。','V入賞の必要な台では、画面表示に従って打ちます。',[53.5,32.5,7.5,6.5]],
+  ['大当り確率','この台は、1回の抽選で当たる確率が1/30です。','30回で必ず当たる、という意味ではなく、毎回1/30の抽選を受けているという意味です。',[71,12,25,13]]
  ];
  let index=-1,returnFocus=null;
  function open(){
@@ -29,7 +29,7 @@
   if(window.pachinkoGame)window.pachinkoGame.reset();
   stage.classList.add('lesson-open');stage.querySelectorAll('button,input,a').forEach(el=>{if(!layer.contains(el)){el.dataset.lessonTab=el.getAttribute('tabindex')??'';el.setAttribute('tabindex','-1');}});
   layer.hidden=false;card.style.left='';card.style.right='';card.style.top='';index=-1;spot.hidden=true;card.classList.add('choose');
-  $('lessonProgress').textContent='はじめに';$('lessonTitle').textContent='用語説明を受けますか？';$('lessonText').textContent='場所を見ながら、1つずつ確認できます。';$('lessonHint').textContent='受けずに、そのまま遊技もできます。';
+  $('lessonScope').hidden=false;$('lessonScope').textContent='パチンコは機種ごとに設備や機能が違います。このシミュレーションでは基本的な名称や用途を理解し、実営業では機種ごとに理解する必要があります。';$('lessonProgress').textContent='はじめに';$('lessonTitle').textContent='用語説明を受けますか？';$('lessonText').textContent='場所を見ながら、1つずつ確認できます。';$('lessonHint').textContent='受けずに、そのまま遊技もできます。';
   $('lessonChoices').hidden=false;$('lessonActions').hidden=true;$('lessonStart').focus();
  }
  function close(){
@@ -38,7 +38,7 @@
   (returnFocus&&returnFocus!==document.body?returnFocus:$('startZone')).focus();
  }
  function render(i){
-  index=i;const [title,text,hint,rect]=terms[i];card.style.left=rect[0]>67&&rect[1]<50?'20%':'auto';card.style.right=rect[0]>67&&rect[1]<50?'auto':'2%';card.style.top=rect[0]>67&&rect[1]<50?'53%':'9%';card.classList.remove('choose');$('lessonChoices').hidden=true;$('lessonActions').hidden=false;
+  $('lessonScope').hidden=true;index=i;const [title,text,hint,rect]=terms[i];card.style.left=rect[0]>67&&rect[1]<50?'20%':'auto';card.style.right=rect[0]>67&&rect[1]<50?'auto':'2%';card.style.top=rect[0]>67&&rect[1]<50?'53%':'9%';card.classList.remove('choose');$('lessonChoices').hidden=true;$('lessonActions').hidden=false;
   $('lessonProgress').textContent=`${i+1} / ${terms.length}`;$('lessonTitle').textContent=title;$('lessonText').textContent=text;$('lessonHint').textContent=hint;
   spot.hidden=false;[spot.style.left,spot.style.top,spot.style.width,spot.style.height]=rect.map(x=>x+'%');
   $('lessonBack').disabled=i===0;$('lessonNext').textContent=i===terms.length-1?'理解した・遊技へ':'理解した・次へ';

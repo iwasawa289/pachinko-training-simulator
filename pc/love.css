@@ -19,3 +19,6 @@ body{background:radial-gradient(ellipse at top,#351028,#09070e 65%);font-family:
 .lesson-open #lessonOpen,.lesson-open #startZone,.lesson-open #stopPlayBtn,.lesson-open #resetBtn,.lesson-open #powerInStage{pointer-events:none}
 body.lesson-push #pushBtn{display:block;animation:none}
 @media(max-width:800px){#lessonCard{width:30%;font-size:16px;padding:14px}#lessonTitle{font-size:22px}#lessonCard.choose{width:65%;left:17.5%}.game-data-row span{font-size:14px}}
+
+#lessonScope{font-size:clamp(16px,1.2vw,19px);line-height:1.75;text-align:left;padding-top:14px;border-top:1px solid #985371;color:#ffe3ef}#lessonScope[hidden]{display:none!important}#lessonCard.choose{top:18%}
+.digit.suspense{animation:none;filter:none;transition:transform .5s ease-out,color .3s}.digit.near-stop{transform:translateY(-24%);color:#fff3a5;filter:drop-shadow(0 0 14px #ffbc75)}.digit.settling{animation:finalDigitStop .5s ease-out}@keyframes finalDigitStop{0%{transform:translateY(-24%)}65%{transform:translateY(8%)}100%{transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.digit.suspense{transition:none}.digit.settling{animation:none}}
