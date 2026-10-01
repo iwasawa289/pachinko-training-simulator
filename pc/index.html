@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LOVE上等！｜パチンコ新人研修</title>
+<title>LOVE上等！｜パチンコ体験</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#0a0d12;color:#fff;font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif}.wrap{max-width:1536px;margin:0 auto;padding:6px}.stage{max-height:calc(100vh - 12px);width:min(100%,calc((100vh - 12px)*1.5));margin:0 auto}.stage{position:relative;width:100%;aspect-ratio:3/2;background:#000;border-radius:18px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.45)}.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.digit-wrap{position:absolute;left:18.9%;top:17.2%;width:31.2%;height:23.2%;display:flex;align-items:center;justify-content:center;gap:3.7%;pointer-events:none}.digit{width:27%;text-align:center;font-weight:900;font-size:clamp(28px,7vw,108px);line-height:1;color:#fff;text-shadow:0 0 14px rgba(255,255,255,.85),0 0 28px rgba(0,90,255,.65)}.hold-overlay{position:absolute;left:40.8%;top:64.7%;width:11.8%;display:flex;justify-content:space-between;pointer-events:none}.hold-dot{width:20%;aspect-ratio:1;border-radius:50%;background:rgba(30,30,40,.9);border:2px solid rgba(255,255,255,.35);box-shadow:inset 0 0 8px #000}.hold-dot.on{background:radial-gradient(circle at 35% 30%,#fff 0 8%,#5aa7ff 28%,#004bd4 65%,#001440 100%);box-shadow:0 0 18px #4b9cff}.status-badge{position:absolute;right:2%;top:63.8%;width:13.3%;padding:.55% .5%;text-align:center;font-weight:800;font-size:clamp(11px,1.7vw,24px);pointer-events:none}.message{position:absolute;left:19.2%;top:42.7%;width:31%;text-align:center;font-weight:800;font-size:clamp(12px,1.9vw,30px);color:#fff;text-shadow:0 2px 7px #000;pointer-events:none}.callout{position:absolute;left:18.6%;top:48.7%;width:34%;text-align:center;font-weight:800;font-size:clamp(12px,1.7vw,27px);color:#ffe88a;text-shadow:0 2px 8px #000;pointer-events:none;opacity:0;transition:.25s}.callout.show{opacity:1}.click-zone{position:absolute;cursor:pointer;background:transparent;border:2px solid transparent;border-radius:14px}.click-zone:focus{outline:3px solid #00a3ff;outline-offset:2px}#handleZone{right:2%;bottom:2.2%;width:15.4%;height:34%}.panel{margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.card{background:#131922;border:1px solid #293240;border-radius:14px;padding:12px}.label{font-size:12px;color:#9fb0c4;margin-bottom:6px}.value{font-size:20px;font-weight:800}.controls{margin-top:10px;display:flex;flex-wrap:wrap;gap:10px}button{appearance:none;border:0;border-radius:12px;padding:12px 16px;font-weight:800;font-size:16px;cursor:pointer}.primary{background:#0b84ff;color:#fff}.secondary{background:#222c39;color:#fff;border:1px solid #3a4759}.danger{background:#4a1d24;color:#fff}input[type=range]{width:220px}.guide{margin-top:10px;background:#101722;border:1px solid #293240;border-radius:14px;padding:14px;line-height:1.65}.guide strong{color:#8cc8ff}@media(max-width:800px){.panel{grid-template-columns:1fr}.controls{align-items:stretch}button{flex:1}}
 
@@ -565,12 +565,12 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 
-<link rel="stylesheet" href="love.css?v=1">
+<link rel="stylesheet" href="love.css?v=2">
 </head>
 <body>
-<div class="wrap"><nav class="love-nav"><strong>LOVE上等！ 研修編</strong><button id="soundBtn" type="button" aria-pressed="false">音：OFF</button><button id="resetBtn" type="button">最初から</button><a href="original/">元の研修機</a></nav>
+<div class="wrap"><nav class="love-nav"><strong>LOVE上等！ 体験機</strong><button id="lessonOpen" type="button">用語説明</button><button id="soundBtn" type="button" aria-pressed="false">音：OFF</button><button id="resetBtn" type="button">最初から</button><a href="original/">元の研修機</a></nav>
 <div class="stage" id="stage">
-<img class="bg" alt="研修用パチンコシミュレーター画面" src="assets/board.jpg">
+<img class="bg" alt="研修用パチンコシミュレーター画面" src="assets/board-clean.jpg">
 <div class="love-header"><strong>LOVE 上等！</strong><span>新人研修 オリジナル機<br>恋の勝負、はじめよう。</span></div><div id="drama">恋の予感…</div><button id="pushBtn" type="button" aria-label="演出ボタンを押す">PUSH ♥</button><div id="rightArrow">右打ち →</div><canvas id="fx" width="1536" height="1024"></canvas>
 <div class="lcd-cover"></div><div class="digit-wrap" aria-hidden="true"><div class="digit" id="d1">7</div><div class="digit" id="d2">3</div><div class="digit" id="d3">5</div></div><div class="windmill" id="windmill" aria-hidden="true"><span></span><span></span><span></span></div>
 <div class="hold-overlay" id="holds"></div>
@@ -581,10 +581,6 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
 <div id="vGate" aria-hidden="true">
   <div class="vGateInner">V</div>
 </div>
-<div id="vGuide" aria-hidden="true">
-  <div class="vGuideTitle">V入賞口</div>
-  <div class="vGuideBody">大当たり後、「Vを狙え！」の間に右打ちし、10秒以内に玉を1個入賞させます。</div>
-</div>
 <div id="vOverlay" aria-live="assertive">
   <div id="vOverlayText"></div>
   <div id="vOverlayCount"></div>
@@ -594,33 +590,8 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
   <b id="vTimerText">1 / 10秒</b>
 </div>
 
-<div id="trainingPauseOverlay" aria-live="assertive">
-  <div id="trainingPauseCard">
-    <div id="trainingPauseTitle">大当たり時の重要ポイント</div>
-    <div id="trainingPauseBody">
-      大当り後はⅤ入賞をしないと大当たりの権利が消失します。機種によって決められた時間内に入賞させてください。<br><br>
-      大当たり中のアタッカーも〇個入るまでか、機種によって決められた時間で閉じてしまいます。<br><br>
-      玉掛かり、玉詰まり、玉飛び不良のトラブルでお客様が損をしてしまう可能性があります。<br><br>
-      台の状況とトラブル内容で対応方法は様々ですので、研修中にマスターしお客様に迷惑が掛からない様にしましょう。
-    </div>
-    <button id="trainingResumeBtn" type="button">クリックで再開</button>
-  </div>
-</div>
-<div id="stateListPanel" style="position:absolute;right:1.1%;top:3.5%;width:29.4%;height:54.5%;background:#000;border:3px solid #275c99;border-radius:22px;z-index:20;padding:1.7% 1.6%;overflow:hidden">
-  <div style="font-size:clamp(14px,1.45vw,23px);font-weight:800;color:#67b4ff;margin-bottom:2%">現在の状態</div>
-  <div id="stateList" style="display:flex;flex-direction:column;gap:.65%;height:84%">
-    <div class="stateRow" data-step="1"><span class="num">1</span><span class="txt">ハンドルを回す</span></div>
-    <div class="stateRow" data-step="2"><span class="num">2</span><span class="txt">ヘソ入賞と保留</span></div>
-    <div class="stateRow" data-step="3"><span class="num">3</span><span class="txt">図柄変動</span></div>
-    <div class="stateRow" data-step="4"><span class="num">4</span><span class="txt">リーチ演出</span></div>
-    <div class="stateRow" data-step="5"><span class="num">5</span><span class="txt">大当り</span></div>
-    <div class="stateRow" data-step="6"><span class="num">6</span><span class="txt">右打ち・V入賞</span></div>
-      <div class="stateRow" data-step="7"><span class="num">7</span><span class="txt">右打ち・大当たりアタッカー入賞</span></div>
-      <div class="stateRow" data-step="8"><span class="num">8</span><span class="txt">通常状態へ戻る</span></div>
-  </div>
-  <div id="stateHelp" style="margin-top:1.8%;font-size:clamp(9px,.82vw,13px);line-height:1.45;color:#d8e5f4">通常時は25～40％が目安です。</div>
-</div>
-
+<div id="gameDataPanel"><div class="game-data-title">LOVE CHANCE</div><div class="game-data-row"><span>大当り確率</span><b>1 / 30</b></div><div class="game-data-row"><span>総回転</span><b id="spinCountView">0</b></div><div class="game-data-row"><span>大当り回数</span><b id="hitCountView">0</b></div></div>
+<div id="lessonLayer" hidden><div id="lessonBlocker"></div><div id="lessonSpot" hidden aria-hidden="true"></div><section id="lessonCard" role="dialog" aria-modal="true" aria-labelledby="lessonTitle" aria-describedby="lessonText lessonHint"><div id="lessonProgress"></div><h1 id="lessonTitle"></h1><p id="lessonText"></p><p id="lessonHint"></p><div id="lessonChoices"><button id="lessonStart" class="lesson-primary" type="button">用語説明を受ける</button><button id="lessonSkip" type="button">受けずに遊技する</button></div><div id="lessonActions" hidden><button id="lessonBack" type="button">戻る</button><button id="lessonNext" class="lesson-primary" type="button">理解した・次へ</button><button id="lessonExit" type="button">説明を終了</button></div></section></div>
 <div id="ballsOverlay" style="
   position:absolute;
   left:1.45%;
@@ -660,7 +631,7 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
 
 
 <div id="rightControlsBase" aria-hidden="true"></div>
-<div id="startInstruction">右下のハンドル強さを設定し、<br>左下の遊技開始をクリック</div>
+
 <div id="playStatusBox" style="
   position:absolute;
   right:1.2%;
@@ -684,7 +655,7 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
   <div id="statusMain" style="font-size:clamp(16px,1.55vw,24px);font-weight:900;line-height:1.15;">通常時</div>
   <div id="statusSub" style="font-size:clamp(10px,.9vw,14px);color:#bcd8f5;">左打ち</div>
 </div>
-<div class="power-ui"><span>ハンドルの強さ</span><input id="powerInStage" type="range" min="0" max="100" value="0"><b id="powerInStageText">0%</b></div>
+<div class="power-ui"><label for="powerInStage">ハンドルの強さ</label><input aria-label="ハンドルの強さ" id="powerInStage" type="range" min="0" max="100" value="0"><b id="powerInStageText">0%</b></div>
 </div>
 
 <div class="panel">
@@ -700,7 +671,7 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
 
 </div>
 
-<div class="guide" id="guide"><strong>研修 STEP 1：</strong>「遊技開始」または「1発発射」を押してください。<br>玉は<strong>左側の発射レールから盤面上部へ上がり</strong>、液晶役物の左側で釘に当たりながら落下し、風車→道釘→ヘソへ向かいます。</div>
+
 </div>
 
 <script>
@@ -729,30 +700,12 @@ if(els.holds){
   }
 } // 最大100発/分
 
-const steps={
- 1:['ハンドルを回す','右下で強さを設定し、左下の遊技開始をクリック'],
- 2:['ヘソ入賞と保留','玉が風車・道釘を経由してヘソへ入賞すると保留が増えます。'],
- 3:['図柄変動','保留を1つ消化して液晶図柄が変動します。'],
- 4:['リーチ演出','左右の図柄が揃うとリーチです。最後に中央の図柄が停止します。'],
- 5:['大当り','3図柄が揃うと大当りです。'],
- 6:['右打ち・V入賞','大当たり後は右打ちでV入賞させます。'],
-  7:['右打ち・大当たりアタッカー入賞','各ラウンドはアタッカー10個入賞、または20秒経過で終了します。'],
-  8:['通常状態へ戻る','5R終了後は通常状態へ戻ります。']
-};
-
-function setStep(n){
-  currentStep=Math.max(1,Math.min(8,n));
-  const s=steps[currentStep];
-  const rows=document.querySelectorAll('#stateList .stateRow');
-  rows.forEach(row=>{
-    const step=Number(row.dataset.step);
-    row.classList.toggle('active',step===currentStep);
-    row.classList.toggle('done',step<currentStep);
-  });
-  const help=document.getElementById('stateHelp');
-  if(help) help.textContent=s[1];
-}
+const JACKPOT_PROBABILITY=1/30;
+let totalSpins=0;
+function drawJackpot(random=Math.random){return random()<JACKPOT_PROBABILITY;}
+function setStep(n){currentStep=Math.max(1,Math.min(8,n));}
 function sync(){
+  $("spinCountView").textContent=totalSpins;$("hitCountView").textContent=hits;
   document.body.classList.toggle("bonus-active",state==="bonus");
   if(els.balls)els.balls.textContent=balls;if(els.ballsDisplay)els.ballsDisplay.textContent=balls;
   if(els.holdCount)els.holdCount.textContent=hold;
@@ -958,14 +911,15 @@ $('soundBtn').addEventListener('click',()=>{soundOn=!soundOn;if(soundOn){audioCt
 $('resetBtn').addEventListener('click',reset);
 async function spin(){
  if(spinning||hold<=0||state!=='normal')return;
- spinning=true;const token=++spinToken;const color=holdColors.shift()||'blue';hold--;sync();updateHoldColors();setStep(3);
+ spinning=true;totalSpins++;const token=++spinToken;const color=holdColors.shift()||'blue';hold--;sync();updateHoldColors();setStep(3);
  const ds=[els.d1,els.d2,els.d3];
  const wait=async(ms)=>{await sleep(ms);if(token!==spinToken)throw new Error('cancelled');};
  const roll=()=>ds.forEach(d=>d.textContent=1+Math.floor(Math.random()*9));
- const hit=Math.random()<.5,n=hit?7:1+Math.floor(Math.random()*9),superReach=Math.random()<.65;
+ const hit=drawJackpot(),n=hit?7:1+Math.floor(Math.random()*9),reach=hit||Math.random()<.22,superReach=reach&&(hit||Math.random()<.45);
  try{
-  ds.forEach(d=>d.classList.add('spinning'));cue('恋の予感…',color);tone(460,.12);
+  ds.forEach(d=>{d.classList.remove('locked');d.classList.add('spinning')});cue('恋の予感…',color);tone(460,.12);
   for(let i=0;i<18;i++){roll();await wait(80);}
+  if(!reach){ds.forEach(d=>d.classList.remove('spinning','locked'));ds[0].textContent=n;ds[1].textContent=n%9+1;ds[2].textContent=(n+1)%9+1;cue('恋の予感…');await wait(700);setStep(1);return;}
   for(let phase=1;phase<=2;phase++){cue(phase===1?'この想い、届け！':'想いは止まらない！',phase===1?'green':'red');tone(550+phase*120,.15);for(let i=0;i<8;i++){roll();await wait(100);}}
   ds[0].textContent=n;ds[2].textContent=n;ds[0].classList.remove('spinning');ds[2].classList.remove('spinning');ds[0].classList.add('locked');ds[2].classList.add('locked');setStep(4);cue('REACH ♥ 恋の勝負！','red');tone(800,.3);
   for(let i=0;i<12;i++){ds[1].textContent=1+Math.floor(Math.random()*9);await wait(180);}
@@ -1042,55 +996,15 @@ function clearRoundTimer(){
   if(roundTimer){clearInterval(roundTimer);roundTimer=null;}
 }
 
-function setTrainingPauseContent(title,body){
-  const t=$('trainingPauseTitle');
-  const b=$('trainingPauseBody');
-  if(t)t.textContent=title;
-  if(b)b.innerHTML=body;
-}
-
 function showTrainingPause(){
-  // 大当たり成立直後にすべての遊技動作を停止
-  resetVGateForNextJackpot();
-  stopPlay();
-  animBalls=[];
-  clearVTimer();
-  clearRoundTimer();
-  hideVOverlay();
-  setVUiActive(false);
-  trainingPauseMode='postHit';
-  state='trainingPause';
-  setTrainingPauseContent(
-    '大当たり時の重要ポイント',
-    '大当り後はⅤ入賞をしないと大当たりの権利が消失します。機種によって決められた時間内に入賞させてください。<br><br>'+
-    '大当たり中のアタッカーも〇個入るまでか、機種によって決められた時間で閉じてしまいます。<br><br>'+
-    '玉掛かり、玉詰まり、玉飛び不良のトラブルでお客様が損をしてしまう可能性があります。<br><br>'+
-    '台の状況とトラブル内容で対応方法は様々ですので、研修中にマスターしお客様に迷惑が掛からない様にしましょう。'
-  );
-  els.trainingPauseOverlay.classList.add('show');
-  if(els.statusMain)els.statusMain.textContent='研修説明';
-  if(els.statusSub)els.statusSub.textContent='クリックで再開してください';
+  // Startup lessons are separate; jackpots continue directly into the V challenge.
+  resetVGateForNextJackpot();animBalls=[];clearVTimer();clearRoundTimer();hideVOverlay();setVUiActive(false);
+  startVChallenge();
 }
-
 function showRoundTimeoutTraining(){
-  if(state!=='bonus')return;
-  clearRoundTimer();
-  stopPlay();
-  animBalls=[];
-  trainingPauseMode='roundTimeout';
-  state='roundTrainingPause';
-  setTrainingPauseContent(
-    '大当たり時の重要ポイント',
-    '大当たり時は機種によって決まった玉数を入賞、もしくは決まった秒数を経過したら1ラウンドが終了します。<br><br>'+
-    '玉掛かり、玉飛び不良で玉が飛ばない時は、決まった玉数が入らずにラウンド終了してしまうので注意が必要です。<br><br>'+
-    '入賞し獲得した賞球は確定しますので、大当たりを消化出来る持ち玉があれば、玉詰まりは大当たり終了後に対応がベストです。<br><br>'+
-    'ただし、大当たり後の保留で再度大当たりし、Ⅴ入賞をさせる場合もありますので、迅速に対応しましょう。'
-  );
-  els.trainingPauseOverlay.classList.add('show');
-  if(els.statusMain)els.statusMain.textContent='ラウンド時間終了';
-  if(els.statusSub)els.statusSub.textContent='クリックで再開してください';
+  if(state!=='bonus')return;clearRoundTimer();
+  if(round<5)startBonusRound(round+1);else endBonusGame();
 }
-
 function endBonusGame(){
   clearRoundTimer();
   state='normal';
@@ -1136,48 +1050,6 @@ function startBonusRound(nextRound){
     }
   },1000);
 }
-
-function resumeFromTrainingPause(){
-  if(state==='trainingPause' && trainingPauseMode==='postHit'){
-    els.trainingPauseOverlay.classList.remove('show');
-    trainingPauseMode='';
-    startVChallenge();
-    startPlay();
-    return;
-  }
-
-  if(state==='roundTrainingPause' && trainingPauseMode==='roundTimeout'){
-    els.trainingPauseOverlay.classList.remove('show');
-    trainingPauseMode='';
-    if(round<5){
-      startBonusRound(round+1);
-      startPlay();
-    }else{
-      endBonusGame();
-      startPlay();
-    }
-  }
-  if(state==='punkTrainingPause' && trainingPauseMode==='vPunk'){
-    els.trainingPauseOverlay.classList.remove('show');
-    trainingPauseMode='';
-    state='normal';
-    round=0;
-    attacker=0;
-    setStep(8);
-    els.message.textContent='通常遊技中';
-    sync();
-    setTimeout(()=>{
-      if(state==='normal'){
-        setStep(1);
-        resumeDigital();
-        startPlay();
-      }
-    },300);
-    return;
-  }
-}
-
-
 
 function resetVGateForNextJackpot(){
   // 次回の大当たりに備えて、閉じたV入賞口を再び開放可能な見た目へ戻す
@@ -1240,7 +1112,9 @@ function successVChallenge(){
   if(els.statusSub)els.statusSub.textContent='5R大当たりへ';
   sync();
 
+  const successToken=vToken;
   setTimeout(()=>{
+    if(vToken!==successToken||state!=='vsuccess')return;
     hideVOverlay();
     startBonusRound(1);
   },1000);
@@ -1248,30 +1122,10 @@ function successVChallenge(){
 
 function failVChallenge(token){
   if(token!==vToken||state!=='vwait')return;
-
-  ++vToken;
-  clearVTimer();
-  clearRoundTimer();
-  setVUiActive(false);
-  stopPlay();
-  animBalls=[];
-  hideVOverlay();
-
-  trainingPauseMode='vPunk';
-  state='punkTrainingPause';
-
-  setTrainingPauseContent(
-    'V入賞時の重要ポイント',
-    '決まった時間内にⅤ入賞させられなかった状態を「パンク」といいます。パンクすると、大当たりや確率変動の権利が消滅し、大当たりで得られたはずの出玉が獲得出来なくなります。<br><br>'+
-    '玉掛かり、玉飛び不良時は、こちらからV入賞をさせる事も必要です。<br><br>'+
-    'トラブル時は迅速に正確な対応が求められます。色々なケースを研修中に学んでおいてください。'
-  );
-
-  if(els.trainingPauseOverlay)els.trainingPauseOverlay.classList.add('show');
-  if(els.statusMain)els.statusMain.textContent='V入賞失敗';
-  if(els.statusSub)els.statusSub.textContent='クリックで再開してください';
+  const endedToken=++vToken;clearVTimer();clearRoundTimer();setVUiActive(false);animBalls=[];hideVOverlay();
+  state='punk';cue('V入賞失敗','red');els.message.textContent='通常に戻ります';sync();
+  setTimeout(()=>{if(vToken!==endedToken||state!=='punk')return;state='normal';round=0;attacker=0;cue('恋の予感…');setStep(8);sync();resumeDigital();},1800);
 }
-
 function finishBonus(){
   if(state!=='bonus')return;
   attacker++;
@@ -1291,6 +1145,7 @@ function finishBonus(){
 }
 
 function fire(){
+  if(document.getElementById("lessonLayer")&&!document.getElementById("lessonLayer").hidden)return;
   if(balls<=0)return;
   const power=Number(els.power.value);
 
@@ -1368,6 +1223,7 @@ function fire(){
 }
 
 function startPlay(){
+  if(!$("lessonLayer").hidden)return;
   if(autoTimer)return;
   const power=Number(els.power.value);
   if(power<=0){
@@ -1381,7 +1237,7 @@ function stopPlay(){
   if(autoTimer){clearInterval(autoTimer);autoTimer=null}
 }
 function reset(){
-  ++spinToken;holdColors=[];if(pushResolve)pushResolve();pushBtn.classList.remove("show");document.querySelectorAll(".digit").forEach(d=>d.classList.remove("locked","spinning"));cue("恋の予感…");
+  totalSpins=0;++spinToken;holdColors=[];if(pushResolve)pushResolve();pushBtn.classList.remove("show");document.querySelectorAll(".digit").forEach(d=>d.classList.remove("locked","spinning"));cue("恋の予感…");
   stopPlay();clearVTimer();clearRoundTimer();trainingPauseMode='';vToken++;setVUiActive(false);resetVGateForNextJackpot();hideVOverlay();if(els.trainingPauseOverlay)els.trainingPauseOverlay.classList.remove('show');balls=250;hold=0;hits=0;state='normal';round=0;attacker=0;spinning=false;animBalls=[];
   els.d1.textContent='7';els.d2.textContent='3';els.d3.textContent='5';
   els.message.textContent='遊技開始を押してください';
@@ -1390,7 +1246,7 @@ function reset(){
 }
 
 els.startZone.addEventListener('click',startPlay);
-if(els.trainingResumeBtn)els.trainingResumeBtn.addEventListener('click',resumeFromTrainingPause);
+
 if(els.stopPlayBtn){
   els.stopPlayBtn.addEventListener('click',()=>{
     stopPlay();
@@ -1444,9 +1300,11 @@ els.power.addEventListener('input',()=>{
 els.power.value=0;
 els.powerText.textContent='0%';
 setStep(1);sync();
+window.pachinkoGame={reset};
 })();
 </script>
 
+<script src="lesson.js?v=2"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -1455,5 +1313,5 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
-<p class="love-notice">研修用の架空機種です。抽選・賞球・V入賞条件は学習用に調整しています。保留色やPUSH操作は当選を保証しません。</p></body>
+<p class="love-notice">オリジナル体験機｜大当り確率1/30｜現金・景品の獲得はありません。</p></body>
 </html>
