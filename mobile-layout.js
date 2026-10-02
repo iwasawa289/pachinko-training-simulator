@@ -21,3 +21,14 @@
  window.addEventListener('resize',schedule);if(window.visualViewport)window.visualViewport.addEventListener('resize',schedule);
  new ResizeObserver(schedule).observe(controls);new ResizeObserver(schedule).observe(nav);fit();
 })();
+(()=>{
+ const original=document.getElementById('message'),controls=document.getElementById('mobileControls');
+ const message=document.createElement('div');message.id='mobileMessage';message.setAttribute('role','status');message.setAttribute('aria-live','polite');message.setAttribute('aria-atomic','true');controls.prepend(message);
+ function syncMessage(){
+  const text=original.innerText||original.textContent||'';
+  // Retain deliberate warning line breaks without copying presentation markup.
+  const copy=original.cloneNode(true);copy.querySelectorAll('br').forEach(br=>br.replaceWith('\n'));
+  message.textContent=copy.textContent||text;
+ }
+ new MutationObserver(syncMessage).observe(original,{childList:true,subtree:true,characterData:true});syncMessage();
+})();

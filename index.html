@@ -566,7 +566,7 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
 <link rel="apple-touch-icon" href="icon-mobile-192.png">
 
 <link rel="stylesheet" href="pc/love.css?v=4">
-<link rel="stylesheet" href="mobile.css?v=3">
+<link rel="stylesheet" href="mobile.css?v=4">
 </head>
 <body>
 <div class="wrap"><nav class="love-nav"><strong>パチンコ新人研修シミュレーター</strong><button id="lessonOpen" type="button">用語説明</button><button id="soundBtn" type="button" aria-pressed="false">音：OFF</button><button id="resetBtn" type="button">最初から</button><a href="pc/original/">元の研修機</a></nav>
@@ -676,7 +676,7 @@ body.v-active .power-ui{top:89.4% !important;min-height:8.2% !important;padding:
 
 </div>
 
-<script src="mobile-layout.js?v=2"></script>
+<script src="mobile-layout.js?v=3"></script>
 <script>
 (()=>{
 const canvas=document.getElementById('fx'),ctx=canvas.getContext('2d');
@@ -1237,7 +1237,7 @@ function startPlay(){
   if(autoTimer)return;
   const power=Number(els.power.value);
   if(power<=0){
-    els.message.textContent='右下でハンドル強さを設定してください';
+    els.message.textContent='画面下でハンドルの強さを設定してください';
     return;
   }
   fire();
