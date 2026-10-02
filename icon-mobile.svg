@@ -1,0 +1,70 @@
+<svg aria-label="パチンコ研修・携帯" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="70%">
+      <stop offset="0%" stop-color="#0d3b80"/>
+      <stop offset="55%" stop-color="#071a38"/>
+      <stop offset="100%" stop-color="#03070f"/>
+    </radialGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff334d"/>
+      <stop offset="45%" stop-color="#ff1010"/>
+      <stop offset="100%" stop-color="#8d0000"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="25%" stop-color="#aeb8c8"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="78%" stop-color="#5b6678"/>
+      <stop offset="100%" stop-color="#f7fbff"/>
+    </linearGradient>
+    <linearGradient id="yellow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff86a"/>
+      <stop offset="100%" stop-color="#ffd500"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#28ff7e"/>
+      <stop offset="100%" stop-color="#00a84c"/>
+    </linearGradient>
+    <filter id="glowR"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="glowB"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".75"/></filter>
+  </defs>
+
+  <rect width="512" height="512" rx="92" fill="#02050b"/>
+  <rect x="16" y="16" width="480" height="480" rx="82" fill="url(#bg)" stroke="url(#red)" stroke-width="18" filter="url(#glowR)"/>
+
+  <!-- decorative pachinko ring -->
+  <circle cx="256" cy="258" r="188" fill="none" stroke="#0f66ff" stroke-width="12" opacity=".65" filter="url(#glowB)"/>
+  <circle cx="256" cy="258" r="166" fill="none" stroke="#ff1c2e" stroke-width="7" opacity=".7"/>
+  <g fill="#ffffff">
+    <circle cx="102" cy="148" r="9"/><circle cx="410" cy="148" r="9"/>
+    <circle cx="82" cy="260" r="8"/><circle cx="430" cy="260" r="8"/>
+    <circle cx="120" cy="372" r="9"/><circle cx="392" cy="372" r="9"/>
+  </g>
+
+  <!-- beginner mark -->
+  <g filter="url(#shadow)">
+    <path d="M164 112 Q164 95 180 95 L256 168 L332 95 Q348 95 348 112 L348 264 L256 344 L164 264 Z"
+          fill="#111820" stroke="url(#metal)" stroke-width="18" stroke-linejoin="round"/>
+    <path d="M183 128 L246 188 L246 303 L183 248 Z" fill="url(#yellow)"/>
+    <path d="M329 128 L266 188 L266 303 L329 248 Z" fill="url(#green)"/>
+    <path d="M256 183 L256 309" stroke="#ffffff" stroke-width="5" opacity=".7"/>
+  </g>
+
+  <!-- pachinko balls -->
+  <g fill="url(#metal)" stroke="#ff2b2b" stroke-width="5" filter="url(#shadow)">
+    <circle cx="118" cy="302" r="25"/>
+    <circle cx="390" cy="306" r="25"/>
+    <circle cx="256" cy="398" r="28"/>
+  </g>
+  <g fill="#ffffff" opacity=".88">
+    <circle cx="109" cy="293" r="7"/><circle cx="381" cy="297" r="7"/><circle cx="246" cy="388" r="8"/>
+  </g>
+
+  <!-- mobile indicator -->
+  <g transform="translate(0,8)" filter="url(#shadow)">
+    <rect x="162" y="354" width="188" height="92" rx="28" fill="url(#red)" stroke="url(#metal)" stroke-width="7"/>
+<path fill="#fff" transform="translate(202.0 416) scale(0.054 -0.054)" d="M465 851 568 825Q537 740 487.5 664.0Q438 588 380 537Q373 548 359.0 563.5Q345 579 331.0 594.0Q317 609 306 618Q358 659 400.0 720.5Q442 782 465 851ZM687 848 803 822Q780 781 758.5 743.0Q737 705 718 678L626 703Q643 734 660.0 775.0Q677 816 687 848ZM469 516H911V448H469ZM360 281H722V186H360ZM469 627H911V558H469ZM633 710H740V371H633ZM729 200H892V115H704ZM851 200H959Q959 200 958.0 185.0Q957 170 955 158Q947 63 935.0 13.5Q923 -36 904 -56Q888 -71 869.5 -78.0Q851 -85 826 -87Q806 -89 772.0 -89.0Q738 -89 701 -88Q700 -65 691.0 -37.5Q682 -10 668 11Q702 7 733.5 6.0Q765 5 780 5Q804 5 815 14Q826 26 835.0 65.0Q844 104 851 187ZM486 246H605Q593 112 539.5 32.0Q486 -48 378 -93Q372 -82 358.5 -65.0Q345 -48 330.0 -32.0Q315 -16 303 -6Q395 25 438.5 85.5Q482 146 486 246ZM499 750H939V667H424ZM416 656 518 745V363H416ZM416 404H949V320H416ZM21 347Q82 361 168.0 384.0Q254 407 341 432L357 324Q278 300 196.5 275.5Q115 251 47 232ZM37 660H343V550H37ZM142 849H252V37Q252 -4 243.5 -28.5Q235 -53 212 -67Q190 -81 156.5 -86.0Q123 -91 73 -90Q71 -68 62.0 -35.5Q53 -3 42 21Q70 20 93.5 19.5Q117 19 126 20Q135 20 138.5 23.5Q142 27 142 37ZM694 281H799Q789 229 776.5 173.0Q764 117 753 76L651 91Q663 131 675.0 182.5Q687 234 694 281Z"/>
+<path fill="#fff" transform="translate(256.0 416) scale(0.054 -0.054)" d="M436 368H554V-88H436ZM439 850H555V560H439ZM180 280H764V185H296V-23H180ZM721 280H839V86Q839 47 829.5 25.0Q820 3 792 -9Q764 -21 726.5 -23.5Q689 -26 640 -26Q636 -2 625.5 25.5Q615 53 603 74Q633 73 663.5 72.5Q694 72 703 73Q713 74 717.0 76.5Q721 79 721 87ZM67 455H935V235H819V359H178V235H67ZM201 844H315V590H683V844H803V498H201ZM48 757H954V660H48Z"/>
+  </g>
+</svg>
