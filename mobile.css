@@ -32,3 +32,12 @@ html,body{width:100%;height:100%;overflow:hidden}body{overscroll-behavior:none}.
 @media(orientation:landscape) and (max-height:600px){#mobileMessage{font-size:11px;padding:4px 6px;line-height:1.4}#mobileControls{gap:3px}#mobileControls #startZone,#mobileControls #stopPlayBtn{min-height:34px!important}}
 @media(orientation:landscape) and (max-height:340px){#mobileControls #gameDataPanel{padding:2px!important}.game-data-row b{font-size:16px}.game-data-row span{font-size:9px}#mobileControls #ballsOverlay,#mobileControls #playStatusBox,#mobileControls .power-ui{padding:3px!important}#ballsDisplay{font-size:22px!important}#statusMain{font-size:12px!important}#statusSub{font-size:10px!important;line-height:1.2}#mobileControls #startZone,#mobileControls #stopPlayBtn{min-height:30px!important;padding:3px!important;font-size:11px!important}.power-ui input{height:20px}.power-ui label{font-size:11px}.power-ui b{font-size:15px}#mobileMessage{font-size:10px;line-height:1.4;padding:3px 5px}#mobileControls #vTimerBox.show{padding:2px!important;font-size:9px}#vTimerText{font-size:14px}}
 
+
+
+/* Mobile decorative-only pass; no playfield scaling or hit-area changes. */
+body{background:radial-gradient(ellipse at top,#45112f,#100711 72%)}
+.love-nav{background:linear-gradient(90deg,#240b1f,#3b1031);border-bottom:1px solid #ff7fba}
+.machine-viewport{outline:2px solid #ed6eac;outline-offset:-2px;box-shadow:0 0 18px #fb40934a}
+#mobileControls{background:#160a16;border-radius:14px;padding:5px}
+#mobileControls #gameDataPanel,#mobileControls #ballsOverlay,#mobileControls #playStatusBox,#mobileControls .power-ui{border:1px solid #df619d!important;background:linear-gradient(160deg,#2b0d24,#120916)!important}
+#mobileControls #startZone,#mobileControls #stopPlayBtn{border:1px solid #ffb6d8!important;background:linear-gradient(#ff70b0,#ba175c 60%,#68133d)!important;box-shadow:inset 0 1px #ffe1ee,0 0 9px #f5439055}
