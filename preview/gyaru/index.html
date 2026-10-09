@@ -2,11 +2,11 @@
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ギャル風デザイン確認用</title>
 <style>body{margin:0;background:#170b17;color:#fff;font-family:"Meiryo UI",sans-serif}header{padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#34152d;border-bottom:2px solid #f277af}h1{font-size:16px;margin:0 12px 0 0}button{background:#d72879;border:1px solid #ffb8d7;color:white;padding:9px 16px;border-radius:9px;cursor:pointer;font-weight:bold}button[aria-pressed=true]{background:#77254c}small{color:#f9d1e3}iframe{display:block;width:100%;height:calc(100dvh - 74px);border:0;background:#110713}@media(max-width:700px){iframe{height:calc(100dvh - 120px)}}</style></head>
 <body><header><h1>ギャル風デザイン 試作確認</h1><button id="pc" aria-pressed="true">PC版</button><button id="mobile" aria-pressed="false">携帯版</button><small>元の盤面・風車・V入賞口・玉の動作はそのままです</small></header>
-<iframe id="sim" title="研修シミュレーター試作版" src="../../pc/"></iframe>
+<iframe id="sim" title="研修シミュレーター試作版" src="./pc/"></iframe>
 <script>
 const frame=document.getElementById('sim');let mode='pc';
 const base=new URL('./',window.location.href).href;
 function inject(){try{const doc=frame.contentDocument;if(!doc)return;const links=['pc-theme.css'];if(mode==='mobile')links.push('mobile-theme.css');for(const path of links){const el=doc.createElement('link');el.rel='stylesheet';el.href=base+path+'?preview=20261009c';doc.head.appendChild(el)}}catch(err){document.querySelector('small').textContent='装飾の読み込みを確認できません: '+err.message}}
 frame.addEventListener('load',inject);
-for(const m of ['pc','mobile'])document.getElementById(m).addEventListener('click',()=>{mode=m;for(const n of ['pc','mobile'])document.getElementById(n).setAttribute('aria-pressed',String(n===m));frame.src=m==='pc'?'../../pc/':'../../';});
+for(const m of ['pc','mobile'])document.getElementById(m).addEventListener('click',()=>{mode=m;for(const n of ['pc','mobile'])document.getElementById(n).setAttribute('aria-pressed',String(n===m));frame.src=m==='pc'?'./pc/':'./mobile/';});
 </script></body></html>
