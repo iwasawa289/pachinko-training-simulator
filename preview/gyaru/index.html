@@ -5,8 +5,8 @@
 <iframe id="sim" title="研修シミュレーター試作版" src="../../pc/"></iframe>
 <script>
 const frame=document.getElementById('sim');let mode='pc';
-const base='./';
-function inject(){try{const doc=frame.contentDocument;if(!doc)return;const links=['pc-theme.css'];if(mode==='mobile')links.push('mobile-theme.css');for(const path of links){const el=doc.createElement('link');el.rel='stylesheet';el.href=base+path+'?preview=20261009';doc.head.appendChild(el)}}catch(err){document.querySelector('small').textContent='装飾の読み込みを確認できません: '+err.message}}
+const base=new URL('./',window.location.href).href;
+function inject(){try{const doc=frame.contentDocument;if(!doc)return;const links=['pc-theme.css'];if(mode==='mobile')links.push('mobile-theme.css');for(const path of links){const el=doc.createElement('link');el.rel='stylesheet';el.href=base+path+'?preview=20261009b';doc.head.appendChild(el)}}catch(err){document.querySelector('small').textContent='装飾の読み込みを確認できません: '+err.message}}
 frame.addEventListener('load',inject);
 for(const m of ['pc','mobile'])document.getElementById(m).addEventListener('click',()=>{mode=m;for(const n of ['pc','mobile'])document.getElementById(n).setAttribute('aria-pressed',String(n===m));frame.src=m==='pc'?'../../pc/':'../../';});
 </script></body></html>
