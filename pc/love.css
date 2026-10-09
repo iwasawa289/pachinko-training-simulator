@@ -45,3 +45,8 @@ body{background:radial-gradient(ellipse at 12% 0%,#47112f 0%,transparent 38%),ra
 .love-nav button:hover,.love-nav a:hover{background:#5d1c43!important;box-shadow:0 0 9px #f5509b77}
 #gameDataPanel{outline:1px solid #a64674;outline-offset:-5px}
 #ballsOverlay,#playStatusBox,.power-ui{border-color:#f077b2!important;box-shadow:0 0 10px #f44c9440}
+
+
+/* Board ornaments: transparent layer, never catches clicks or alters ball physics. */
+.stage::before{content:"";position:absolute;left:0;top:0;width:67%;height:100%;background:url("assets/gyaru-ornaments.svg") center/100% 100% no-repeat;z-index:3;pointer-events:none;opacity:.86}
+@media(max-width:800px){.stage::before{opacity:.78}}
