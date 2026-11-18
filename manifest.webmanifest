@@ -13,25 +13,25 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "icons/training-192.png",
+      "src": "icons/mobile-training-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/training-512.png",
+      "src": "icons/mobile-training-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/training-maskable-192.png",
+      "src": "icons/mobile-training-maskable-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "icons/training-maskable-512.png",
+      "src": "icons/mobile-training-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
