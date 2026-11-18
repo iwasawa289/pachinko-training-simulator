@@ -1,4 +1,4 @@
-const CACHE='pachinko-training-pc-love-v5';
+const CACHE='pachinko-training-pc-love-v6';
 const ASSETS=[
   './index.html',
   './love.css?v=4',
@@ -6,9 +6,10 @@ const ASSETS=[
   './assets/board-natural.jpg',
   './assets/training-title.png',
   './assets/love-lcd.jpg',
-  './manifest.webmanifest',
-  './icon-192.png',
-  './icon-pachinko-v2.svg'
+  './manifest.webmanifest?v=2',
+  '../icons/training-192.png',
+  '../icons/training-512.png',
+  '../icons/training-180.png'
 ];
 
 self.addEventListener('install', event => {
