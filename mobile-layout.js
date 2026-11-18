@@ -13,7 +13,7 @@
   const landscape=matchMedia('(orientation:landscape) and (max-height:600px)').matches;
   const availableHeight=Math.max(0,height-padY-nav.getBoundingClientRect().height-(landscape?gap:controls.getBoundingClientRect().height+gap*2));
   const availableWidth=wrap.clientWidth-padX-(landscape?controls.getBoundingClientRect().width+gap:0);
-  const ratio=1.005;
+  const ratio=0.9;
   const width=Math.max(0,Math.min(availableWidth,availableHeight*ratio));
   viewport.style.width=width+'px';viewport.style.height=(width/ratio)+'px';
  }

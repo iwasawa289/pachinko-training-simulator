@@ -41,3 +41,36 @@ body{background:radial-gradient(ellipse at top,#45112f,#100711 72%)}
 #mobileControls{background:#160a16;border-radius:14px;padding:5px}
 #mobileControls #gameDataPanel,#mobileControls #ballsOverlay,#mobileControls #playStatusBox,#mobileControls .power-ui{border:1px solid #df619d!important;background:linear-gradient(160deg,#2b0d24,#120916)!important}
 #mobileControls #startZone,#mobileControls #stopPlayBtn{border:1px solid #ffb6d8!important;background:linear-gradient(#ff70b0,#ba175c 60%,#68133d)!important;box-shadow:inset 0 1px #ffe1ee,0 0 9px #f5439055}
+
+/* Compact mobile controls and a closer view of the playable cabinet. */
+.wrap{gap:4px;padding:max(2px,env(safe-area-inset-top)) max(2px,env(safe-area-inset-right)) max(2px,env(safe-area-inset-bottom)) max(2px,env(safe-area-inset-left))}
+.love-nav{flex-wrap:nowrap;align-items:center;gap:6px;border-bottom:0;background:none}
+.love-nav strong{width:auto;flex:1;min-width:0;font-size:13px;line-height:1.2}
+.love-nav #lessonOpen{flex:0 0 auto;min-height:32px;padding:4px 12px;font-size:12px}
+.machine-viewport{margin:0 auto;border-radius:8px}
+.stage{position:relative;left:-2.5%;width:166.666667%!important}
+.love-header{left:1.5%;width:60%}
+#mobileControls{grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;padding:3px;border-radius:8px}
+#mobileMessage{grid-column:1/-1;padding:3px 6px;font-size:11px;line-height:1.3;border-radius:5px}
+#mobileControls #gameDataPanel{grid-column:1/span 3;padding:2px!important;gap:2px;border-radius:5px!important}
+#mobileControls .game-data-row{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-width:0}
+#mobileControls .game-data-row span{font-size:9px;line-height:1.2}
+#mobileControls .game-data-row b{font-size:17px;line-height:1.15}
+#mobileControls #ballsOverlay{grid-column:4;display:flex;flex-direction:column;gap:0;padding:2px!important;border-radius:5px!important;line-height:1.15}
+#mobileControls #ballsOverlay>div:first-child{font-size:9px!important}
+#mobileControls #ballsDisplay{font-size:21px!important;line-height:1.15!important}
+#mobileControls #ballsOverlay span{font-size:10px!important}
+#mobileControls #playStatusBox{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2px 8px;padding:3px 5px!important;border-radius:5px!important}
+#mobileControls #statusMain{font-size:12px!important;line-height:1.25!important}
+#mobileControls #statusSub{font-size:11px!important;line-height:1.25!important}
+#mobileControls #vTimerBox.show{grid-column:1/-1;padding:3px!important}
+#mobileControls #startZone{grid-column:1/span 2}
+#mobileControls #stopPlayBtn{grid-column:3/span 2}
+#mobileControls #startZone,#mobileControls #stopPlayBtn{min-height:40px!important;padding:5px!important;font-size:14px!important;border-radius:7px!important}
+#mobileControls .power-ui{grid-column:1/-1;grid-template-columns:80px minmax(0,1fr) 35px;gap:4px;align-items:center;padding:2px 5px!important;border-radius:5px!important}
+#mobileControls .power-ui label{grid-column:1;grid-row:1;font-size:11px;line-height:1.2}
+#mobileControls .power-ui input{grid-column:2;grid-row:1;min-width:0;width:100%;height:34px;margin:0}
+#mobileControls .power-ui b{grid-column:3;grid-row:1;font-size:16px;text-align:right}
+@media(orientation:landscape) and (max-height:600px){.wrap{grid-template-columns:minmax(0,1fr) 200px;gap:3px}.machine-viewport{margin:auto}.love-nav strong{font-size:12px}.love-nav #lessonOpen{min-height:28px;padding:3px 10px}#mobileControls #startZone,#mobileControls #stopPlayBtn{min-height:36px!important;font-size:12px!important}#mobileControls .power-ui{grid-template-columns:58px minmax(0,1fr) 30px}#mobileControls .power-ui label{font-size:10px}#mobileControls .power-ui b{font-size:14px}}
+
+#mobileControls #playStatusBox{flex-direction:row!important}
